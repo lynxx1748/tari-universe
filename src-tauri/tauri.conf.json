@@ -11,10 +11,7 @@
     },
     "bundle": {
         "active": true,
-        "targets": "all",
-        "macOS": {
-            "providerShortName": "Tari Labs, LLC"
-        },
+        "targets": ["deb", "appimage", "rpm", "arm64"],,
         "linux": {
             "appimage": {
                 "bundleMediaFramework": true
