@@ -1,4 +1,7 @@
 # Tari Universe v1
+<img width="1283" height="787" alt="Screenshot_2025-11-29_09-55-13" src="https://github.com/user-attachments/assets/93a1d48f-151b-4994-a4a1-2129a84bb87c" />
+
+
 
 [![Downloads](https://img.shields.io/badge/downloads-700k%2B-brightgreen)](https://www.tari.com/downloads/)
 [![Platform Support](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://www.tari.com/downloads/)
