@@ -100,7 +100,7 @@ cargo install tauri-cli --locked
 ### Build
 
 ```bash
-git clone https://github.com/tari-project/universe.git
+git clone https://github.com/lynxx1748/tari-universe.git
 cd universe
 npm install
 npm run tauri build
