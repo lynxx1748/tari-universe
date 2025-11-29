@@ -7,7 +7,7 @@ import path from 'path';
 
 const args = process.argv.slice(2);
 
-const envName = process.env.TARI_NETWORK || 'esmeralda';
+const envName = process.env.TARI_NETWORK || 'mainnet';
 console.log(`Loading environment file: ./src-tauri/env.${envName}`);
 
 const envPath = path.resolve(`./src-tauri/env.${envName}`);
