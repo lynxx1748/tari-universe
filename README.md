@@ -1,10 +1,10 @@
 # Tari Universe v1
 <img width="1283" height="787" alt="Screenshot_2025-11-29_09-55-13" src="https://github.com/user-attachments/assets/93a1d48f-151b-4994-a4a1-2129a84bb87c" />
 
+# Disclaimer:
 
-
-[![Downloads](https://img.shields.io/badge/downloads-700k%2B-brightgreen)](https://www.tari.com/downloads/)
-[![Platform Support](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://www.tari.com/downloads/)
+These are pre-compiled packages for installing Tari Universe on Linux Machines for other Downloads (Windows/MacOS) please visit the Offical Tari GitHub. 
+[Windows/MacOS](https://www.tari.com/downloads/) from [tari.com](https://www.tari.com/). This is the easiest way to run Tari Universe.
 
 # Desktop Mining Application for Tari
 
@@ -18,10 +18,6 @@ The Tari Universe ecosystem includes:
 - **Tari Universe Wallet** - Mobile companion app for tracking earnings
 
 ## Installing using binaries
-
-### Download
-
-[Download binaries](https://www.tari.com/downloads/) from [tari.com](https://www.tari.com/). This is the easiest way to run Tari Universe.
 
 ### Install
 
@@ -101,7 +97,7 @@ cargo install tauri-cli --locked
 
 ```bash
 git clone https://github.com/lynxx1748/tari-universe.git
-cd universe
+cd tari-universe
 npm install
 npm run tauri build
 ```
