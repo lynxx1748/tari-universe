@@ -84,3 +84,25 @@ export const TooltipChipText = styled(Typography).attrs({ variant: 'p' })`
     display: flex;
     align-items: center;
 `;
+
+export const PoolConnectionStatus = styled.div<{ $isConnected: boolean }>`
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    background-color: ${({ $isConnected, theme }) =>
+        $isConnected ? 'rgba(49, 238, 170, 0.15)' : 'rgba(239, 68, 68, 0.15)'};
+    color: ${({ $isConnected }) => ($isConnected ? '#31eeaa' : '#ef4444')};
+    border: 1px solid ${({ $isConnected }) => ($isConnected ? 'rgba(49, 238, 170, 0.3)' : 'rgba(239, 68, 68, 0.3)')};
+
+    &::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: ${({ $isConnected }) => ($isConnected ? '#31eeaa' : '#ef4444')};
+    }
+`;

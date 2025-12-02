@@ -72,6 +72,7 @@ export const AnimatedGlow = styled.div`
         ${({ theme }) => theme.palette.success.main} 360deg
     );
     animation: ${rotate} 4s linear infinite;
+    animation-play-state: var(--animation-play-state, running);
 `;
 
 export const HeadingRow = styled.div`

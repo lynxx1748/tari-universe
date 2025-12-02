@@ -12,6 +12,7 @@ import { WalletUIMode } from '@app/types/events-payloads';
 
 type UIConfigStoreState = Partial<ConfigUI> & {
     visualModeToggleLoading: boolean;
+    performance_mode: boolean;
 };
 
 const configWalletInitialState: ConfigWallet = {
@@ -38,6 +39,7 @@ const configMininigInitialState: ConfigMining = {
 
 const configUIInitialState: UIConfigStoreState = {
     visualModeToggleLoading: false,
+    performance_mode: true,
     created_at: '',
     application_language: 'en',
     display_mode: 'system',
@@ -45,7 +47,7 @@ const configUIInitialState: UIConfigStoreState = {
     sharing_enabled: true,
     show_experimental_settings: false,
     should_always_use_system_language: false,
-    visual_mode: true,
+    visual_mode: false,
     wallet_ui_mode: WalletUIMode.Standard,
     was_staged_security_modal_shown: false,
     shutdown_mode_selected: false,

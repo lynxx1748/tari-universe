@@ -59,7 +59,7 @@ export const GridAreaBottom = styled.div<{ $swapsOpen?: boolean; $isLoading?: bo
 
 export const BuyOverlay = styled(m.div)`
     background: ${({ theme }) => convertHexToRGBA(theme.mode === 'dark' ? '#1e1e1a' : '#000', 0.5)};
-    backdrop-filter: blur(0.03rem);
+    backdrop-filter: var(--backdrop-blur, blur(0.03rem));
     width: 100%;
     height: 100%;
     position: absolute;

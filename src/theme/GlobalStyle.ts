@@ -1,7 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 import { TOWER_CANVAS_ID } from '@app/store/types/ui.ts';
 
-export const GlobalReset = createGlobalStyle`
+export const GlobalReset = createGlobalStyle<{ $performanceMode?: boolean }>`
+    :root {
+        --animation-duration-multiplier: ${({ $performanceMode }) => ($performanceMode ? '0' : '1')};
+        --backdrop-blur: ${({ $performanceMode }) => ($performanceMode ? 'none' : 'blur(10px)')};
+        --transition-speed: ${({ $performanceMode }) => ($performanceMode ? '0s' : '0.2s')};
+        --animation-play-state: ${({ $performanceMode }) => ($performanceMode ? 'paused' : 'running')};
+    }
+
     *:focus {
         outline: none;
     }

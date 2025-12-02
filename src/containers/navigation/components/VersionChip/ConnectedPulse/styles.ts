@@ -42,6 +42,7 @@ export const Pulse = styled('div')<{ $isConnected: boolean }>`
     border-radius: 50%;
     background-color: #31eeaa;
     animation: ${pulse} 2s infinite;
+    animation-play-state: var(--animation-play-state, running);
 
     ${({ $isConnected }) =>
         !$isConnected &&

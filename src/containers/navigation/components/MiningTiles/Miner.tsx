@@ -10,6 +10,7 @@ import {
     TooltipChipHeading,
     TooltipChipText,
     TooltipChipWrapper,
+    PoolConnectionStatus,
 } from './styles.ts';
 import { Typography } from '@app/components/elements/Typography';
 import { offset, useFloating, useHover, useInteractions } from '@floating-ui/react';
@@ -32,6 +33,7 @@ export interface MinerTileProps {
     unpaidFMT?: string;
     minerModuleState: AppModuleState;
     algo?: GpuMiningAlgorithm;
+    isPoolConnected?: boolean;
 }
 
 export default function MinerTile({
@@ -49,6 +51,7 @@ export default function MinerTile({
     unpaidFMT,
     minerModuleState,
     algo = GpuMiningAlgorithm.SHA3X,
+    isPoolConnected,
 }: MinerTileProps) {
     const { t } = useTranslation(['mining-view', 'p2p'], { useSuspense: false });
 
@@ -122,7 +125,14 @@ export default function MinerTile({
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
                         >
-                            <Typography variant="h5">{t('stats.tile-heading', { ns: 'p2p' })}</Typography>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Typography variant="h5">{t('stats.tile-heading', { ns: 'p2p' })}</Typography>
+                                {isPoolConnected !== undefined && (
+                                    <PoolConnectionStatus $isConnected={isPoolConnected}>
+                                        {isPoolConnected ? t('pool-connected', { ns: 'p2p' }) : t('pool-disconnected', { ns: 'p2p' })}
+                                    </PoolConnectionStatus>
+                                )}
+                            </div>
                             <Typography variant="p">
                                 <Trans
                                     i18nKey="stats.tooltip-copy"
@@ -138,6 +148,14 @@ export default function MinerTile({
                                     </TooltipChipHeading>
                                     <TooltipChipText>{`${unpaidFMT} / ${rewardThresholdString}`}</TooltipChipText>
                                 </TooltipChip>
+                                {poolStats && (
+                                    <TooltipChip>
+                                        <TooltipChipHeading>
+                                            {t('accepted-shares', { ns: 'p2p' })}
+                                        </TooltipChipHeading>
+                                        <TooltipChipText>{poolStats.accepted_shares}</TooltipChipText>
+                                    </TooltipChip>
+                                )}
                             </TooltipChipWrapper>
                         </ExpandedBox>
                     </Tooltip>

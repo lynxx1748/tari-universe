@@ -75,6 +75,20 @@ export const toggleVisualMode = async (enabled: boolean) => {
     }
     useConfigUIStore.setState((c) => ({ ...c, visualModeToggleLoading: false }));
 };
+
+export const togglePerformanceMode = async (enabled: boolean) => {
+    console.info(`${enabled ? 'Enabling' : 'Disabling'} performance mode`);
+    useConfigUIStore.setState((c) => ({ ...c, performance_mode: enabled }));
+
+    // When enabling performance mode, also disable visual mode (3D tower) to save GPU resources
+    if (enabled) {
+        const visualModeEnabled = useConfigUIStore.getState().visual_mode;
+        if (visualModeEnabled) {
+            console.info('Performance mode enabled - disabling visual mode (3D tower) to save resources');
+            await toggleVisualMode(false);
+        }
+    }
+};
 export const handleConnectionStatusChanged = (connectionStatus: ConnectionStatusPayload) => {
     if (connectionStatus === 'InProgress') {
         setIsReconnecting(true);

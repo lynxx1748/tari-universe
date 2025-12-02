@@ -110,4 +110,5 @@ export const CoinImage = styled(m.img)<{ $animationDelay?: string }>`
 
     animation: ${float} 5s ease-in-out infinite;
     animation-delay: ${({ $animationDelay }) => $animationDelay ?? '0s'};
+    animation-play-state: var(--animation-play-state, running);
 `;

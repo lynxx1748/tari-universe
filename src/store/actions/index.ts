@@ -46,6 +46,7 @@ export {
     setIsWebglNotSupported,
     setShowExternalDependenciesDialog,
     setUITheme,
+    togglePerformanceMode,
 } from './uiStoreActions.ts';
 
 export { fetchTransactionsHistory, importSeedWords, setWalletBalance } from './walletStoreActions';
