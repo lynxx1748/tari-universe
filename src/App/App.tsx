@@ -9,9 +9,12 @@ import ThemeProvider from '../theme/ThemeProvider.tsx';
 
 import { AppContentContainer } from './App.styles.ts';
 import { useUIStore } from '@app/store/useUIStore.ts';
+import { useConfigUIStore } from '@app/store/useAppConfigStore.ts';
 import { queryClient } from './queryClient.ts';
 
 import Splashscreen from '../containers/phase/Splashscreen/Splashscreen.tsx';
+import { AchievementToast } from '@app/components/achievements';
+import useAchievementTracker from '@app/hooks/useAchievementTracker';
 
 const ShuttingDownScreen = lazy(() => import('../containers/phase/ShuttingDownScreen/ShuttingDownScreen.tsx'));
 const FloatingElements = lazy(() => import('../containers/floating/FloatingElements.tsx'));
@@ -58,8 +61,12 @@ function CurrentAppSection({ showSplashscreen, isShuttingDown }: CurrentAppSecti
 export default function App() {
     const isShuttingDown = useUIStore((s) => s.isShuttingDown);
     const showSplashscreen = useUIStore((s) => s.showSplashscreen);
+    const performanceMode = useConfigUIStore((s) => s.performance_mode);
 
     const { t } = useTranslation('common');
+
+    // Track mining activity for achievements
+    useAchievementTracker();
 
     if (!window.WebGL2RenderingContext && !window.WebGLRenderingContext) {
         console.error(`WebGL not supported by the browser - userAgent: ${navigator.userAgent}`);
@@ -69,11 +76,12 @@ export default function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <ThemeProvider>
-                <GlobalReset />
+                <GlobalReset $performanceMode={performanceMode} />
                 <GlobalStyle $hideCanvas={showSplashscreen || isShuttingDown} />
                 <LazyMotion features={domMax} strict>
                     <FloatingElements />
                     <CurrentAppSection showSplashscreen={showSplashscreen} isShuttingDown={isShuttingDown} />
+                    <AchievementToast />
                 </LazyMotion>
             </ThemeProvider>
         </QueryClientProvider>
