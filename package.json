@@ -12,7 +12,15 @@
         "lint:fix": "eslint src/ --fix",
         "lint:taplo": "taplo format --check",
         "translate": "node ./scripts/translator.js",
-        "knip": "knip"
+        "knip": "knip",
+        "build:release": "node ./scripts/build.js",
+        "build:deb": "node ./scripts/build.js --format deb",
+        "build:appimage": "node ./scripts/build.js --format appimage",
+        "build:rpm": "node ./scripts/build.js --format rpm",
+        "build:linux": "node ./scripts/build.js --target linux",
+        "build:windows": "node ./scripts/build.js --target windows",
+        "build:macos": "node ./scripts/build.js --target macos",
+        "build:clean": "node ./scripts/build.js --clean"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.16",

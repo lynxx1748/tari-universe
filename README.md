@@ -99,15 +99,69 @@ cargo install tauri-cli --locked
 git clone https://github.com/lynxx1748/tari-universe.git
 cd tari-universe
 npm install
-npm run tauri build
+npm run build:release
+```
+
+### Build Scripts
+
+The project includes easy-to-use build scripts for creating distribution packages:
+
+**Using npm:**
+```bash
+npm run build:release     # Build for current platform (all formats)
+npm run build:deb         # Build .deb package only
+npm run build:appimage    # Build .AppImage only
+npm run build:rpm         # Build .rpm package only
+npm run build:linux       # Build all Linux formats
+npm run build:windows     # Build Windows packages
+npm run build:macos       # Build macOS packages
+npm run build:clean       # Clean and rebuild
+```
+
+**Using bash script (Linux/macOS):**
+```bash
+./scripts/build.sh              # Build for current platform
+./scripts/build.sh linux        # Build all Linux packages
+./scripts/build.sh deb          # Build .deb only
+./scripts/build.sh appimage     # Build .AppImage only
+./scripts/build.sh rpm          # Build .rpm only
+./scripts/build.sh clean        # Clean and rebuild
+./scripts/build.sh help         # Show help
+```
+
+**Using PowerShell (Windows):**
+```powershell
+.\scripts\build.ps1                   # Build Windows packages
+.\scripts\build.ps1 -Format msi       # Build MSI only
+.\scripts\build.ps1 -Format exe       # Build EXE only
+.\scripts\build.ps1 -Clean            # Clean build
+.\scripts\build.ps1 -Help             # Show help
+```
+
+**Using Node.js directly:**
+```bash
+node scripts/build.js --help                    # Show all options
+node scripts/build.js --format deb,appimage     # Multiple formats
+node scripts/build.js --clean --verbose         # Detailed output
 ```
 
 ### Output
 
 Built applications will be in `src-tauri/target/release/bundle/`:
 
-- **Linux**: `.deb` and `.AppImage` files
-- **Windows**: `.msi` installer
+```
+bundle/
+├── deb/          # .deb packages (Debian/Ubuntu)
+├── appimage/     # .AppImage files (Universal Linux)
+├── rpm/          # .rpm packages (Fedora/RHEL)
+├── msi/          # .msi installers (Windows)
+├── nsis/         # .exe installers (Windows)
+├── dmg/          # .dmg disk images (macOS)
+└── macos/        # .app bundles (macOS)
+```
+
+- **Linux**: `.deb`, `.AppImage`, and `.rpm` files
+- **Windows**: `.msi` and `.exe` installers
 - **macOS**: `.dmg` and `.app` bundle
 
 ## Contributing
