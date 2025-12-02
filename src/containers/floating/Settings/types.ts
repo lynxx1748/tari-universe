@@ -1,5 +1,6 @@
 export const SETTINGS_TYPES = [
     'general',
+    'achievements',
     'airdrop',
     'wallet',
     'mining',

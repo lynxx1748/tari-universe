@@ -35,4 +35,5 @@ export const TextContent = styled.div`
     -webkit-background-clip: text;
     color: transparent;
     animation: ${gradient} linear infinite;
+    animation-play-state: var(--animation-play-state, running);
 `;

@@ -77,6 +77,7 @@ export const AnimatedBG = styled.div<{ $col1: string; $col2: string; $isWalletFa
     height: 400px;
     transform: translate(-50%, -50%);
     animation: ${({ $isWalletFailed }) => ($isWalletFailed ? 'none' : spin)} 15s linear infinite;
+    animation-play-state: var(--animation-play-state, running);
     z-index: 0;
     opacity: ${({ $isWalletFailed }) => ($isWalletFailed ? 0.1 : 1)};
 `;

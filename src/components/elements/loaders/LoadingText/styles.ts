@@ -22,6 +22,7 @@ export const AnimatedGradientText = styled.span`
     background-clip: text;
     color: transparent;
     animation: ${gradient} 2.5s linear infinite;
+    animation-play-state: var(--animation-play-state, running);
     font-weight: inherit;
     font-size: inherit;
     display: inline-block;

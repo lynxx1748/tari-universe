@@ -12,6 +12,7 @@ import RestartDialog from '@app/components/dialogs/RestartDialog.tsx';
 import SettingsNavigation from './components/Navigation.tsx';
 import { SETTINGS_TYPES, SettingsType } from './types.ts';
 import {
+    AchievementsSettings,
     AirdropSettings,
     ConnectionsSettings,
     ExperimentalSettings,
@@ -32,6 +33,7 @@ const SettingsModal = memo(function SettingsModal() {
     const isSettingsOpen = useAppStateStore((s) => s.isSettingsOpen);
     const markups = {
         general: <GeneralSettings />,
+        achievements: <AchievementsSettings />,
         mining: <MiningSettings />,
         connections: <ConnectionsSettings />,
         pools: <PoolsSettings />,

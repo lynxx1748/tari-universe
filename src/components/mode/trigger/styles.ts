@@ -24,9 +24,9 @@ export const TriggerContent = styled.div<Props>`
     border-radius: 70px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(240, 241, 240, 0.75);
-    backdrop-filter: blur(5px);
+    backdrop-filter: var(--backdrop-blur, blur(5px));
     color: #000;
-    transition: background 0.3s cubic-bezier(0.39, 0.3, 0.2, 0.87);
+    transition: background var(--transition-speed, 0.3s) cubic-bezier(0.39, 0.3, 0.2, 0.87);
 
     &:hover {
         background: rgba(240, 241, 240, 1);
@@ -91,11 +91,11 @@ export const SecondaryTriggerContent = styled.div<Props>`
     padding: 10px 15px;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(5px);
+    backdrop-filter: var(--backdrop-blur, blur(5px));
     justify-content: space-between;
     color: #fff;
 
-    transition: background 0.2s cubic-bezier(0.39, 0.3, 0.2, 0.87);
+    transition: background var(--transition-speed, 0.2s) cubic-bezier(0.39, 0.3, 0.2, 0.87);
 
     ${Content} {
         flex: 1 1 auto;

@@ -27,8 +27,8 @@ export const ContentWrapper = styled.div<ContentWrapperStyleProps>`
                         theme.palette.background.paper,
                         theme.mode == 'dark' ? 0.75 : 0.6
                     )};
-                    -webkit-backdrop-filter: blur(20px);
-                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: var(--backdrop-blur, blur(20px));
+                    backdrop-filter: var(--backdrop-blur, blur(20px));
                 `;
             }
             case 'primary':

@@ -10,7 +10,7 @@ export const OptionsList = styled(m.div)`
     width: 100%;
     box-shadow: 0 16px 30px 0 rgba(0, 0, 0, 0.25);
     background: ${({ theme }) => theme.palette.background.tooltip};
-    backdrop-filter: blur(12px);
+    backdrop-filter: var(--backdrop-blur, blur(12px));
     border-radius: 10px;
     padding: 10px;
 `;
