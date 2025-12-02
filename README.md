@@ -151,6 +151,91 @@ Configuration files are stored at:
 - **Windows**: `%APPDATA%\tari-universe\`
 - **macOS**: `~/Library/Application Support/tari-universe/`
 
+## Changelog
+
+### Phase 1 Complete: Stats & Achievements (Latest)
+
+Added gamification features to make mining more engaging and provide detailed insights:
+
+**1. Achievement System**
+- 25+ achievements across 5 categories: Mining, Earnings, Time, Social, and Special
+- Rarity tiers: Common, Uncommon, Rare, Epic, Legendary
+- Toast notifications when achievements unlock
+- Progress tracking toward locked achievements
+- Persistent storage - your achievements are saved locally
+
+**Achievement Categories:**
+- ⛏️ **Mining**: Share milestones (100, 1K, 10K, 100K shares)
+- 🔥 **Hashrate**: Reach hashrate goals (1 KH/s to 1 MH/s)
+- ⏰ **Time**: Mining duration milestones (1 hour to 1 month)
+- 🔗 **Streaks**: Consecutive mining days (3, 7, 30 days)
+- 💰 **Earnings**: XTM earning milestones
+- ⭐ **Special**: Enable Performance Mode, complete sessions
+
+**2. Mining Stats Dashboard**
+- New "Stats" tab in Settings (first tab after General)
+- Total XTM earned with large highlight
+- Shares submitted counter
+- Total mining time (formatted as hours/days)
+- Best hashrate achieved
+- Mining streak tracker with visual day dots
+- Last 7 days earnings bar chart
+- Recent mining history with daily breakdowns
+- Additional stats: Sessions count, longest streak, mining start date
+
+**Access:** Settings → Stats tab (📊)
+
+---
+
+### UI/UX Improvements
+
+Multiple improvements to enhance user experience and provide better feedback:
+
+**1. Fixed Lost Connection Alert**
+- Re-enabled the connection status alert that was previously disabled
+- Now properly monitors node connection status and displays warnings when disconnected
+
+**2. Pool Connection Status Indicator**
+- Added visual pool connection status in the mining tiles tooltip
+- Shows "Connected" or "Disconnected" state with color-coded indicators
+- Displays accepted shares count for pool mining
+- CPU tile shows real-time pool connection status
+
+**3. Improved Seed Word Import**
+- New 24-word grid input with numbered boxes (1-24)
+- Real-time validation as you type
+- Visual feedback for each word (green = valid, red = invalid)
+- Smart paste support - paste all 24 words at once
+- Keyboard navigation (Space/Tab to move to next word)
+- Progress counter showing words entered
+
+**4. Hardware Status Display**
+- New "Hardware Status" section in Settings → Mining
+- Shows CPU and GPU mining status at a glance
+- Displays current hashrate for each
+- Shows pool connection status for CPU
+- Lists detected GPU devices
+- Color-coded status indicators (Mining/Idle/Disabled)
+
+---
+
+### Performance Mode
+
+Added a new **Performance Mode** feature to optimize mining hashrates by reducing UI resource consumption.
+
+**What's New:**
+- New "Performance Mode" toggle in Settings → General
+- Enabled by default for optimal mining performance
+- Automatically disables the 3D tower visualization (WebGL)
+- Pauses all decorative CSS animations (rotating cubes, pulses, gradients, floating elements)
+- Removes GPU-intensive backdrop blur effects
+- Speeds up/removes UI transitions
+
+**Impact:**
+- Significantly reduced CPU/GPU usage from UI rendering
+- More system resources available for mining operations
+- Users can disable Performance Mode in Settings to restore fancy graphics
+
 ## Troubleshooting
 
 **Application won't start:**
