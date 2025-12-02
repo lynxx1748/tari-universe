@@ -67,6 +67,7 @@ export const AnimatedCubeWrapper = styled.div<{ $duration: number; $delay: numbe
     height: 100%;
     animation: ${rotate} ${({ $duration }) => $duration}s linear infinite;
     animation-delay: ${({ $delay }) => $delay}s;
+    animation-play-state: var(--animation-play-state, running);
     border-radius: 500px;
     position: relative;
 `;
@@ -83,4 +84,5 @@ export const IndividualCubeWrapper = styled.div<{ $rotationDuration: number }>`
     top: 0;
     left: 50%;
     animation: ${cubeRotate} ${({ $rotationDuration }) => $rotationDuration}s linear infinite;
+    animation-play-state: var(--animation-play-state, running);
 `;

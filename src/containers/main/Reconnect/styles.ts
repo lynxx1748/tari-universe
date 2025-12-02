@@ -15,8 +15,8 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: var(--backdrop-blur, blur(15px));
+    -webkit-backdrop-filter: var(--backdrop-blur, blur(15px));
     z-index: 2;
 `;
 
@@ -86,6 +86,7 @@ export const RetryTimer = styled.div`
         );
         transform: translateX(-100%) skewX(-25deg); // Initial position off-screen left
         animation: ${shine} 2s infinite linear; // Apply the animation
+        animation-play-state: var(--animation-play-state, running);
     }
 `;
 

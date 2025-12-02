@@ -9,6 +9,7 @@ import StartApplicationOnBootSettings from './StartApplicationOnBootSettings.tsx
 import AutoUpdate from './AutoUpdate.tsx';
 import PreReleaseSettings from './PreReleaseSettings.tsx';
 import VisualMode from '@app/containers/main/Dashboard/components/VisualMode.tsx';
+import PerformanceMode from '@app/containers/main/Dashboard/components/PerformanceMode.tsx';
 
 import AirdropNotificationsSettings from './AirdropNotificationSettings.tsx';
 import { TaskTrayModeSettings } from './TaskTrayModeSettings.tsx';
@@ -24,6 +25,7 @@ export const GeneralSettings = () => {
             <AirdropNotificationsSettings />
             <LanguageSettings />
             <ThemeSettings />
+            <PerformanceMode />
             <VisualMode />
             <LogsSettings />
             <SettingsGroupWrapper $advanced>
