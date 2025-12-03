@@ -17,6 +17,7 @@ import {
     setShowShutdownSelectionModal,
     setSidebarOpen,
 } from '@app/store/actions/uiStoreActions';
+import { useUIStore } from '@app/store/useUIStore';
 import {
     handleAvailableMinersChanged,
     handleCpuMinerControlsStateChanged,
@@ -272,6 +273,10 @@ const useTauriEventsListener = () => {
                             break;
                         case 'SetShowBatteryAlert':
                             setShowBatteryAlert(event.payload);
+                            break;
+                        case 'WalletOnboardingRequired':
+                            console.info('Wallet onboarding required');
+                            useUIStore.setState({ showWalletOnboarding: true });
                             break;
                         default:
                             console.warn('Unknown event', JSON.stringify(event));

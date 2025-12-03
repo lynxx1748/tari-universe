@@ -1,0 +1,28 @@
+{
+    "title": "Welcome to Tari Universe",
+    "subtitle": "To start mining, you'll need a wallet to receive your earnings. Choose how you'd like to proceed:",
+    "options": {
+        "create": {
+            "title": "Create New Wallet",
+            "description": "Generate a brand new wallet. You'll receive a 24-word recovery phrase to back up."
+        },
+        "import": {
+            "title": "Import Existing Wallet",
+            "description": "Restore a wallet using your 24-word recovery phrase from a previous installation."
+        }
+    },
+    "import": {
+        "title": "Import Your Wallet",
+        "subtitle": "Enter your 24-word recovery phrase, separated by spaces.",
+        "placeholder": "Enter your 24-word seed phrase here...",
+        "button": "Import Wallet"
+    },
+    "quit": "Quit Application",
+    "back": "Back",
+    "errors": {
+        "invalid-word-count": "Please enter exactly 24 words separated by spaces.",
+        "import-failed": "Failed to import wallet. Please check your seed phrase and try again.",
+        "create-failed": "Failed to create wallet. Please try again."
+    }
+}
+

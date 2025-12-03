@@ -57,6 +57,7 @@ use crate::credential_manager::{
 };
 use crate::events::CriticalProblemPayload;
 use crate::events_emitter::EventsEmitter;
+use crate::wallet_onboarding::{WalletOnboardingChannel, WalletOnboardingChoice};
 use crate::mining::pools::cpu_pool_manager::CpuPoolManager;
 use crate::mining::pools::gpu_pool_manager::GpuPoolManager;
 use crate::mining::pools::PoolManagerInterfaceTrait;
@@ -250,25 +251,63 @@ impl InternalWallet {
                         tari_wallet_details: Some(tari_wallet_details),
                     }
                 } else {
-                    // Create new wallet
-                    let tari_seed = CipherSeed::new();
-                    let (tari_wallet_details, tari_seed_binary) =
-                        InternalWallet::add_tari_wallet(app_handle, tari_seed, None).await?;
+                    // No wallet exists - emit event and wait for user choice
+                    log::info!(target: LOG_TARGET_APP_LOGIC, "No wallet found, waiting for user onboarding choice");
+                    EventsEmitter::emit_wallet_onboarding_required().await;
 
-                    let mut monero_seed_binary = None;
-                    if monero_address.is_empty() {
-                        let monero_seed = MoneroSeed::generate()?;
-                        monero_seed_binary =
-                            Some(InternalWallet::add_monero_wallet(monero_seed).await?);
-                    };
+                    let choice = WalletOnboardingChannel::current()
+                        .read()
+                        .await
+                        .wait_for_choice()
+                        .await;
 
-                    InternalWallet {
-                        tari_address_type: TariAddressType::Internal,
-                        encrypted_tari_seed: Hidden::hide(Some(tari_seed_binary)),
-                        encrypted_monero_seed: Hidden::hide(monero_seed_binary),
-                        monero_address,
-                        external_tari_address: None,
-                        tari_wallet_details: Some(tari_wallet_details),
+                    match choice {
+                        WalletOnboardingChoice::Import(seed_words) => {
+                            // Import wallet from seed phrase
+                            log::info!(target: LOG_TARGET_APP_LOGIC, "User chose to import wallet");
+                            let tari_seed = mnemonic_to_tari_cipher_seed(seed_words).await?;
+                            let (tari_wallet_details, tari_seed_binary) =
+                                InternalWallet::add_tari_wallet(app_handle, tari_seed, None).await?;
+
+                            let mut monero_seed_binary = None;
+                            if monero_address.is_empty() {
+                                let monero_seed = MoneroSeed::generate()?;
+                                monero_seed_binary =
+                                    Some(InternalWallet::add_monero_wallet(monero_seed).await?);
+                            };
+
+                            InternalWallet {
+                                tari_address_type: TariAddressType::Internal,
+                                encrypted_tari_seed: Hidden::hide(Some(tari_seed_binary)),
+                                encrypted_monero_seed: Hidden::hide(monero_seed_binary),
+                                monero_address,
+                                external_tari_address: None,
+                                tari_wallet_details: Some(tari_wallet_details),
+                            }
+                        }
+                        WalletOnboardingChoice::CreateNew | WalletOnboardingChoice::Pending => {
+                            // Create new wallet
+                            log::info!(target: LOG_TARGET_APP_LOGIC, "User chose to create new wallet");
+                            let tari_seed = CipherSeed::new();
+                            let (tari_wallet_details, tari_seed_binary) =
+                                InternalWallet::add_tari_wallet(app_handle, tari_seed, None).await?;
+
+                            let mut monero_seed_binary = None;
+                            if monero_address.is_empty() {
+                                let monero_seed = MoneroSeed::generate()?;
+                                monero_seed_binary =
+                                    Some(InternalWallet::add_monero_wallet(monero_seed).await?);
+                            };
+
+                            InternalWallet {
+                                tari_address_type: TariAddressType::Internal,
+                                encrypted_tari_seed: Hidden::hide(Some(tari_seed_binary)),
+                                encrypted_monero_seed: Hidden::hide(monero_seed_binary),
+                                monero_address,
+                                external_tari_address: None,
+                                tari_wallet_details: Some(tari_wallet_details),
+                            }
+                        }
                     }
                 }
             };

@@ -116,6 +116,10 @@ export type BackendStateUpdateEvent =
           payload: ConfigWallet;
       }
     | {
+          event_type: 'WalletOnboardingRequired';
+          payload: undefined;
+      }
+    | {
           event_type: 'ConfigMiningLoaded';
           payload: ConfigMining;
       }

@@ -126,6 +126,7 @@ mod tor_manager;
 mod updates_manager;
 mod utils;
 mod wallet;
+mod wallet_onboarding;
 mod websocket_events_manager;
 mod websocket_manager;
 
@@ -593,6 +594,8 @@ fn main() {
             commands::mark_shutdown_selection_as_completed,
             commands::mark_feedback_survey_as_completed,
             commands::update_shutdown_mode_selection,
+            commands::check_wallet_exists,
+            commands::complete_wallet_onboarding,
             commands::set_pause_on_battery_mode,
             // Scheduler commands
             commands::add_scheduler_event,

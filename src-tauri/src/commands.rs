@@ -2186,3 +2186,43 @@ pub async fn update_shutdown_mode_selection(
     }
     Ok(())
 }
+
+#[tauri::command]
+pub async fn check_wallet_exists() -> Result<bool, InvokeError> {
+    let timer = Instant::now();
+
+    let wallet_config = ConfigWallet::content().await;
+    let has_wallet = !wallet_config.tari_wallets().is_empty();
+
+    if timer.elapsed() > MAX_ACCEPTABLE_COMMAND_TIME {
+        warn!(target: LOG_TARGET_APP_LOGIC, "check_wallet_exists took too long: {:?}", timer.elapsed());
+    }
+    Ok(has_wallet)
+}
+
+#[tauri::command]
+pub async fn complete_wallet_onboarding(create_new: bool, seed_words: Option<Vec<String>>) -> Result<(), InvokeError> {
+    use crate::wallet_onboarding::{WalletOnboardingChannel, WalletOnboardingChoice};
+
+    let timer = Instant::now();
+
+    let choice = if create_new {
+        WalletOnboardingChoice::CreateNew
+    } else if let Some(words) = seed_words {
+        WalletOnboardingChoice::Import(words)
+    } else {
+        return Err(InvokeError::from_anyhow(anyhow::anyhow!(
+            "Must provide seed_words when not creating new wallet"
+        )));
+    };
+
+    WalletOnboardingChannel::current()
+        .read()
+        .await
+        .set_choice(choice);
+
+    if timer.elapsed() > MAX_ACCEPTABLE_COMMAND_TIME {
+        warn!(target: LOG_TARGET_APP_LOGIC, "complete_wallet_onboarding took too long: {:?}", timer.elapsed());
+    }
+    Ok(())
+}

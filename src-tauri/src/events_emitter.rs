@@ -343,6 +343,21 @@ impl EventsEmitter {
         }
     }
 
+    pub async fn emit_wallet_onboarding_required() {
+        let _unused = FrontendReadyChannel::current().wait_for_ready().await;
+
+        let event = Event {
+            event_type: EventType::WalletOnboardingRequired,
+            payload: (),
+        };
+        if let Err(e) = Self::get_app_handle()
+            .await
+            .emit(BACKEND_STATE_UPDATE, event)
+        {
+            error!(target: LOG_TARGET_APP_LOGIC, "Failed to emit WalletOnboardingRequired event: {e:?}");
+        }
+    }
+
     pub async fn emit_mining_config_loaded(payload: &ConfigMiningContent) {
         let _unused = FrontendReadyChannel::current().wait_for_ready().await;
         let event = Event {

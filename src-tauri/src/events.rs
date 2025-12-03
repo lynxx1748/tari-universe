@@ -59,6 +59,7 @@ pub enum EventType {
     ConfigCoreLoaded,
     ConfigUILoaded,
     ConfigWalletLoaded,
+    WalletOnboardingRequired,
     ConfigMiningLoaded,
     ConfigPoolsLoaded,
     BackgroundNodeSyncUpdate,

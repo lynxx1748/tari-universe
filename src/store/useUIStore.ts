@@ -28,6 +28,7 @@ interface UIStoreState {
     showShutdownSelectionModal: boolean;
     showFeedbackExitSurveyModal: boolean;
     showBatteryAlert: boolean;
+    showWalletOnboarding: boolean;
 }
 const preferredTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
@@ -55,6 +56,7 @@ const initialState: UIStoreState = {
     showShutdownSelectionModal: false,
     showFeedbackExitSurveyModal: false,
     showBatteryAlert: false,
+    showWalletOnboarding: false,
 };
 
 export const useUIStore = create<UIStoreState>()(() => ({
