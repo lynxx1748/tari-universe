@@ -102,7 +102,7 @@ impl Default for ConfigUIContent {
             should_always_use_system_language: false,
             application_language: "en".to_string(),
             sharing_enabled: true,
-            visual_mode: true,
+            visual_mode: false,
             show_experimental_settings: false,
             was_staged_security_modal_shown: false,
             wallet_ui_mode: WalletUIMode::Standard,

@@ -2,7 +2,7 @@
     "version": "1.6.7",
     "productName": "tari-universe",
     "mainBinaryName": "tari-universe",
-    "identifier": "com.tari.universe",
+    "identifier": "com.tari.universe.alpha",
     "build": {
         "beforeDevCommand": "npm run dev",
         "beforeBuildCommand": "npm run build",
