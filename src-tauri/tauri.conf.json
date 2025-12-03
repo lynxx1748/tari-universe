@@ -1,8 +1,8 @@
 {
-    "version": "1.6.6",
-    "productName": "Tari Universe Release 1.6.6",
-    "mainBinaryName": "Tari Universe Release 1.6.6",
-    "identifier": "com.tari.universe.alpha",
+    "version": "1.6.7",
+    "productName": "tari-universe",
+    "mainBinaryName": "tari-universe",
+    "identifier": "com.tari.universe",
     "build": {
         "beforeDevCommand": "npm run dev",
         "beforeBuildCommand": "npm run build",
@@ -33,7 +33,7 @@
         "shortDescription": "Tari Universe is a mining app for Tari.",
         "longDescription": "Introducing Tari Universe, the beautifully simple mining app for Tari. Install it on your Mac or PC and start mining Tari with one click.",
         "publisher": "Tari Labs, LLC",
-        "createUpdaterArtifacts": true
+        "createUpdaterArtifacts": false
     },
     "app": {
         "security": {

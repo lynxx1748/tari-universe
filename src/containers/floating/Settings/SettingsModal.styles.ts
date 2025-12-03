@@ -44,4 +44,6 @@ export const SectionWrapper = styled.div`
     flex-direction: column;
     padding: 0 30px 20px;
     overflow-y: auto;
+    flex: 1;
+    min-height: 0;
 `;
