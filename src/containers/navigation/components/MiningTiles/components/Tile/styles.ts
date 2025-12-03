@@ -60,7 +60,7 @@ export const AnimatedGlowPosition = styled.div`
     justify-content: center;
 `;
 
-export const AnimatedGlow = styled.div`
+export const AnimatedGlow = styled.div<{ $performanceMode?: boolean }>`
     width: 200%;
     aspect-ratio: 1;
     z-index: 0;
@@ -71,8 +71,8 @@ export const AnimatedGlow = styled.div`
         ${({ theme }) => theme.palette.divider} 240deg,
         ${({ theme }) => theme.palette.success.main} 360deg
     );
-    animation: ${rotate} 4s linear infinite;
-    animation-play-state: var(--animation-play-state, running);
+    animation: ${({ $performanceMode }) => ($performanceMode ? 'none' : css`${rotate} 4s linear infinite`)};
+    will-change: ${({ $performanceMode }) => ($performanceMode ? 'auto' : 'transform')};
 `;
 
 export const HeadingRow = styled.div`

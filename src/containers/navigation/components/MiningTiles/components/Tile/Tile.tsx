@@ -67,6 +67,7 @@ export default function Tile({
 }: Props) {
     const isModuleFailed = minerModuleState?.status === AppModuleStatus.Failed;
     const visualMode = useConfigUIStore((s) => s.visual_mode);
+    const performanceMode = useConfigUIStore((s) => s.performance_mode);
 
     const towerInitalized = useUIStore((s) => s.towerInitalized);
     const isConnectedToTariNetwork = useNodeStore((s) => s.isNodeConnected);
@@ -171,7 +172,7 @@ export default function Tile({
             </Inside>
 
             <AnimatePresence>
-                {isMining && !isLoading && !syncing && (
+                {isMining && !isLoading && !syncing && !performanceMode && (
                     <AnimatedGlowPosition>
                         <AnimatedGlow />
                     </AnimatedGlowPosition>

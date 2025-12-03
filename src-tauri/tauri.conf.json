@@ -2,7 +2,7 @@
     "version": "1.6.7",
     "productName": "tari-universe",
     "mainBinaryName": "tari-universe",
-    "identifier": "com.tari.universe.alpha",
+    "identifier": "com.tari.universe.unofficial",
     "build": {
         "beforeDevCommand": "npm run dev",
         "beforeBuildCommand": "npm run build",
@@ -30,8 +30,8 @@
             "icons/systray_icon.png"
         ],
         "copyright": "Copyright (c) 2025 Tari Labs, LLC",
-        "shortDescription": "Tari Universe is a mining app for Tari.",
-        "longDescription": "Introducing Tari Universe, the beautifully simple mining app for Tari. Install it on your Mac or PC and start mining Tari with one click.",
+        "shortDescription": "Tari Universe is a mining app and playground for the Tari Network.",
+        "longDescription": "Introducing Tari Universe, the beautifully simple mining app for the Tari Network. Install it on your Mac or PC and start mining Tari with one click.",
         "publisher": "Tari Labs, LLC",
         "createUpdaterArtifacts": false
     },
@@ -87,7 +87,7 @@
         "withGlobalTauri": true,
         "windows": [
             {
-                "title": "Tari Universe (Alpha) | MainNet",
+                "title": "Tari Universe (Unofficial) | MainNet",
                 "label": "main",
                 "resizable": true,
                 "fullscreen": false,
